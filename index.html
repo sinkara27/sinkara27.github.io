@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>Ma Boutique</title>
+
+    <!-- Telegram Mini Apps -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #222;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #777;
+            margin-top: 0;
+        }
+
+        .product {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .product h2 {
+            margin-top: 0;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        button {
+            width: 100%;
+            border: none;
+            border-radius: 12px;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            background: #2481cc;
+            color: white;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .telegram-user {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>🛍️ Ma Boutique</h1>
+        <p>Bienvenue dans ma boutique numérique</p>
+    </div>
+
+    <div id="user" class="telegram-user">
+        Chargement...
+    </div>
+
+    <div class="product">
+
+        <h2>📦 Mon premier produit</h2>
+
+        <p>
+            Description de ton produit numérique.
+        </p>
+
+        <div class="price">
+            ⭐ 100 Stars
+        </div>
+
+        <button onclick="acheter()">
+            Acheter
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+    const tg = window.Telegram.WebApp;
+
+    // Initialise la Mini App
+    tg.ready();
+
+    // Agrandit la Mini App
+    tg.expand();
+
+    // Récupère les informations de l'utilisateur Telegram
+    const user = tg.initDataUnsafe?.user;
+
+    if (user) {
+
+        const nom = user.first_name || "Utilisateur";
+
+        document.getElementById("user").textContent =
+            "Bonjour " + nom + " 👋";
+
+    } else {
+
+        document.getElementById("user").textContent =
+            "Bienvenue 👋";
+
+    }
+
+    function acheter() {
+
+        tg.showAlert(
+            "Le système de paiement sera ajouté dans la prochaine étape."
+        );
+
+    }
+
+</script>
+
+</body>
+</html>
