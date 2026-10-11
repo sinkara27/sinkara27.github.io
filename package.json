@@ -1,6 +1,7 @@
+
 {
-“name”: “telegram-mini-shop”,
-“version”: “1.0.0”,
-“private”: true,
-“type”: “module”
+  "name": "telegram-mini-shop",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module"
 }
