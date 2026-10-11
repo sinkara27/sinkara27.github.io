@@ -222,14 +222,12 @@
     }
 
     catch (error) {
+    console.error("Erreur de paiement :", error);
 
-        console.error(error);
-
-        tg.showAlert(
-            "❌ Impossible de créer la facture."
-        );
-
-    }
+    tg.showAlert(
+        "Erreur : " + (error.message || "inconnue")
+    );
+}
 
     finally {
 
